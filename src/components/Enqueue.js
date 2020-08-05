@@ -36,7 +36,7 @@ class Enqueue extends React.Component {
       if ( res.data['status'] === 'OK' ){
         var index = res.data['index'];
         console.log("join success", res.data);
-        this.props.history.push(`/wait?id=${this.state.queue.id}&index=${index}`);
+        this.props.history.push(`/app/wait?id=${this.state.queue.id}&index=${index}`);
       } else {
         alert(`Fail to join this queue.\n${res.data['msg']}`);
       }

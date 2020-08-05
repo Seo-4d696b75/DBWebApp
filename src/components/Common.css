@@ -1,3 +1,7 @@
+*{
+	box-sizing: border-box;
+}
+
 .Root-container {
   width: 100%;
   height: 100%;
@@ -47,7 +51,7 @@
 	overflow-y: scroll;
 	width: 100%;
   -ms-overflow-style: none;   
-  scrollbar-width: none;     
+  scrollbar-width: none;   
   margin: 10px;
 }
 
@@ -56,13 +60,17 @@
 }
 
 
-table {
-	table-layout: fixed;
-	width: 100%;
-	max-width: 100%;
+.Table {
 	word-wrap: break-word;
 	word-break: break-all;
   border-collapse: collapse;
+}
+
+.Table.queue{
+	table-layout: fixed;
+	width: 100%;
+	max-width: 100%;
+
 }
 
 .Table-item:hover{
@@ -76,4 +84,49 @@ table {
 	overflow: hidden;
 	text-overflow: ellipsis;
 	text-align: start;
+}
+
+.Counter-container{
+  position: relative;
+  width: 100%;
+}
+
+.Counter-msg{
+  position: absolute;
+  top: 0;
+  left: 0;
+  font-size: 1em;
+}
+
+.Counter-value{
+  font-weight: 600;
+  font-size: 5em;
+}
+.Counter-status{
+  font-weight: 600;
+  font-size: 2em;
+  margin: 20px;
+}
+
+.Button.cancel{
+  margin: 20px;
+  width: 150px;
+  height: 50px;
+  font-size: 1em;
+}
+
+.Table.position{
+  table-layout: auto;
+  margin: auto;
+  margin-bottom: 10px;
+}
+
+.Queue-details{
+  height: 40px;
+  text-align: start;
+}
+
+.Party{
+  margin-top: 50px;
+  width: 200px;
 }

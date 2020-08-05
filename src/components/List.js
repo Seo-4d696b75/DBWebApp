@@ -44,7 +44,7 @@ export default class List extends React.Component {
         </div>
         <div className="Main-frame">
           <div className="Scroll-container">
-            <table>
+            <table className="Table queue">
               <thead>
                 <tr>
                   <th>Name</th>
