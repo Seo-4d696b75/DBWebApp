@@ -1,6 +1,7 @@
 import React from 'react';
 import logo from '../img/queue_sample.png';
 import party from '../img/party_parrot.gif';
+import sync from '../img/sync.png';
 import './Common.css';
 import axios from 'axios';
 import {withRouter} from 'react-router';
@@ -17,11 +18,16 @@ class Wait extends React.Component {
   }
 
   componentDidMount(){
-    console.log('query', this.props.query);
+    this.updateStatus();
+  }
+  
+  updateStatus(){
+    
     const query = {
       id: this.props.query.id,
       index: this.props.query.index,
     }
+    console.log("update status",query);
     axios.get('http://133.242.50.211/api/wait', {params: query}).then( res => {
       if ( res.data['status'] === 'OK' ){
         this.setState({
@@ -43,7 +49,24 @@ class Wait extends React.Component {
   }
 
   cancel(){
+    if ( !this.state.queue ) return;
+    
+    console.log('cancel');
+    const query = {
+      id: this.state.queue.id,
+      index: this.state.position.index,
+    }
+    axios.get('http://133.242.50.211/api/cancel', {params: query}).then( res => {
+      if ( res.data['status'] === 'OK' ){
+        alert(`Success to cancel.\nQueue: ${this.state.queue.name}\nYour Name: ${this.state.position.name}`);
+        this.props.history.push("/");
 
+      }else {
+        alert(`Fail to cencel.\nQueue:${this.state.queue.name}`);
+      }
+    }).catch( err => {
+        console.log('cancel', err);
+    })
   }
 
   render() {
@@ -60,6 +83,7 @@ class Wait extends React.Component {
         </div>
         <div className="Main-frame">
           <div className="Scroll-container">
+            <img className="Button sync" src={sync} alt="update status" onClick={this.updateStatus.bind(this)}></img>
             {this.state.status === 'success' ? (
                 <div>
                     

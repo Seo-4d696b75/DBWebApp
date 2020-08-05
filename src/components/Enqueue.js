@@ -77,7 +77,7 @@ class Enqueue extends React.Component {
                     value={this.state.user_name}
                     onChange={this.onUserNameChanged.bind(this)}/>
                   </div>
-                  <button onClick={this.onJoin.bind(this)}>JOIN</button>
+                  <button className="Button join" onClick={this.onJoin.bind(this)}>JOIN</button>
                 </div>
             ) : (
               <p>reading queue infomation</p>
