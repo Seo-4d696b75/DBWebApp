@@ -75,7 +75,7 @@ class Manage extends React.Component {
         this.props.history.push('/');
 
       } else {
-        alert(`Fail to remove queue \nname: ${this.state.queue.name}\nmessage: ${res.data['msg']}`);
+        alert(`Fail to remove queue\nname: ${this.state.queue.name}\nmessage: ${res.data['msg']}`);
       }
     }).catch(err => {
       console.log('/api/remove', err);

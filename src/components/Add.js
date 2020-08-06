@@ -28,7 +28,7 @@ class Add extends React.Component {
         var id = res.data['id']
         this.props.history.push(`/app/manage?id=${id}`);
       } else {
-        alert(`Fail to create queue.\n${res.data['msg']}`);
+        alert(`Fail to create queue\nMessage: ${res.data['msg']}`);
       }
     }).catch( err => {
       console.log('/api/add', err);

@@ -33,15 +33,15 @@ class Enqueue extends React.Component {
       name: this.state.user_name,
     };
     axios.get('http://133.242.50.211/api/enqueue', {params: query}).then( res => {
+      console.log('api/enqueue', res.data);
       if ( res.data['status'] === 'OK' ){
         var index = res.data['index'];
-        console.log("join success", res.data);
         this.props.history.push(`/app/wait?id=${this.state.queue.id}&index=${index}`);
       } else {
         alert(`Fail to join this queue.\n${res.data['msg']}`);
       }
     }).catch( err => {
-      console.log('join', err);
+      console.log('/api/enqueue', err);
     })
   }
 

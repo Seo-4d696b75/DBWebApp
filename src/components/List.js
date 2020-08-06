@@ -10,18 +10,22 @@ export default class List extends React.Component {
   constructor(){
     super();
     this.state = {
-      list:[]
+      list:[],
+      msg: null,
     };
   }
 
   componentDidMount(){
     axios.get('http://133.242.50.211/api/list').then(res => {
       var status = res.data['status'];
+      console.log('/api/list', res.data);
       if ( status === 'OK' ){
-        this.setState({list: res.data['list']});
-        console.log('/api/list', res.data['list']);
+        this.setState({list: res.data['list'], msg:null});
       } else {
-        console.log('/api/list', status, res.data['msg']);
+        this.setState({
+          list:[],
+          msg: res.data['msg'],
+        })
       }
     });
   }
@@ -44,6 +48,9 @@ export default class List extends React.Component {
         </div>
         <div className="Main-frame">
           <div className="Scroll-container">
+            {this.state.msg ? (
+              <p>{this.state.msg}</p>
+            ) : null }
             <table className="Table queue">
               <thead>
                 <tr>

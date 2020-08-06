@@ -63,7 +63,7 @@ class Wait extends React.Component {
         this.props.history.push("/");
 
       }else {
-        alert(`Fail to cencel.\nQueue:${this.state.queue.name}`);
+        alert(`Fail to cencel.\nQueue: ${this.state.queue.name}\nMessage: ${res.data['msg']}`);
       }
     }).catch( err => {
         console.log('cancel', err);
