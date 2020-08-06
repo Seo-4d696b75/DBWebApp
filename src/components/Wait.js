@@ -29,6 +29,7 @@ class Wait extends React.Component {
     }
     console.log("update status",query);
     axios.get('http://133.242.50.211/api/wait', {params: query}).then( res => {
+      console.log('/api/wait', res.data);
       if ( res.data['status'] === 'OK' ){
         this.setState({
           status: 'success',
@@ -44,7 +45,7 @@ class Wait extends React.Component {
         });
       }
     }).catch( err => {
-        console.log('join', err);
+        console.log('/api/wait', err);
     })
   }
 

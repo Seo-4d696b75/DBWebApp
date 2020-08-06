@@ -49,7 +49,7 @@
 
 .Scroll-container{
 	overflow-y: scroll;
-	width: 100%;
+	width: auto;
   -ms-overflow-style: none;   
   scrollbar-width: none;   
   margin: 10px;
@@ -84,6 +84,11 @@
 	overflow: hidden;
 	text-overflow: ellipsis;
 	text-align: start;
+}
+
+
+.Table-cell.action{
+	overflow: visible;
 }
 
 .Counter-container{
@@ -131,6 +136,7 @@
   top: 10px;
   right: 10px;
   border-radius: 5px;
+  z-index: 10;
 }
 
 
@@ -152,4 +158,50 @@
 .Party{
   margin-top: 50px;
   width: 200px;
+}
+
+.Button.create{
+  
+  margin: 20px;
+  width: 100px;
+  height: 40px;
+  font-size: 1em;
+}
+
+.Input-text.queue-name{
+  width: 250px;
+}
+
+.Input-text.description{
+  width: 250px;
+  height: 100px;
+}
+
+.Table.entry{
+  table-layout: auto;
+  width: 100%;
+}
+
+.Button.remove{
+  margin: 40px;
+  width: 150px;
+  height: 30px;
+}
+
+.Table-cell.wait-status{
+  text-align: center;
+}
+
+.Status-entry{
+  padding-left: 10px;
+  padding-right: 10px;
+  border-radius: 5px;
+  color: white;
+  font-weight: 600;
+}
+.Status-entry.done{
+  background-color: green;
+}
+.Status-entry.wait{
+  background-color: red;
 }
