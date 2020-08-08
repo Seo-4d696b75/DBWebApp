@@ -12,11 +12,7 @@ export default class MAP extends React.Component {
         <header className="App-header">
           <h1>Queue Manager</h1>
           <img src={logo} className="App-logo" alt="logo" />
-          <ul>
-            <li><Link to="/app/list">List of queue</Link></li>
-            <li><Link to="/app/add">Add a queue</Link></li>
-            <li><Link to="/app/wait">Check your position in queue</Link></li>
-          </ul>
+          <Link to="/app/manage">Queue Soncole</Link>
         </header>
       </div>
     )

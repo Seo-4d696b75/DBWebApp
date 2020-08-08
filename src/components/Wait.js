@@ -3,6 +3,8 @@ import logo from '../img/queue_sample.png';
 import party from '../img/party_parrot.gif';
 import sync from '../img/sync.png';
 import './Common.css';
+import Auth from './Auth';
+import firebase from '../Firebase';
 import axios from 'axios';
 import {withRouter} from 'react-router';
 
@@ -23,16 +25,12 @@ class Wait extends React.Component {
   
   updateStatus(){
     
-    const query = {
-      id: this.props.query.id,
-      index: this.props.query.index,
-    }
-    console.log("update status",query);
-    axios.get('http://133.242.50.211/api/wait', {params: query}).then( res => {
+    console.log("update status");
+    axios.get(`http://133.242.50.211/api/wait?id=${this.props.query.id}`).then( res => {
       console.log('/api/wait', res.data);
       if ( res.data['status'] === 'OK' ){
         this.setState({
-          status: 'success',
+          status: 'wait',
           queue: res.data['queue'],
           position: res.data,
         }); 
@@ -40,7 +38,6 @@ class Wait extends React.Component {
         console.log(`Fail to get your position.${res.data['msg']}`);
         this.setState({
           status: 'err',
-          query: query,
           msg: res.data['msg'],
         });
       }
@@ -51,13 +48,22 @@ class Wait extends React.Component {
 
   cancel(){
     if ( !this.state.queue ) return;
+    if ( this.state.status !== 'cancel' ){
+      this.setState(Object.assign(this.state, {
+        status: 'cancel'
+      }));
+      return;
+    }
     
     console.log('cancel');
-    const query = {
-      id: this.state.queue.id,
-      index: this.state.position.index,
-    }
-    axios.get('http://133.242.50.211/api/cancel', {params: query}).then( res => {
+    firebase.auth().currentUser.getIdToken(true).then( token =>{
+      return axios.get(`http://133.242.50.211/api/cancel?id=${this.state.position.id}`, {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      })
+    }).then( res => {
+      console.log('/api/cancel', res.data);
       if ( res.data['status'] === 'OK' ){
         alert(`Success to cancel.\nQueue: ${this.state.queue.name}\nYour Name: ${this.state.position.name}`);
         this.props.history.push("/");
@@ -66,12 +72,12 @@ class Wait extends React.Component {
         alert(`Fail to cencel.\nQueue: ${this.state.queue.name}\nMessage: ${res.data['msg']}`);
       }
     }).catch( err => {
-        console.log('cancel', err);
+        console.log('/api/cancel', err);
     })
   }
 
   render() {
-    return (
+    var child = (
 
       <div className="Root-container">
         <div className="Header-container">
@@ -85,7 +91,7 @@ class Wait extends React.Component {
         <div className="Main-frame">
           <div className="Scroll-container">
             <img className="Button sync" src={sync} alt="update status" onClick={this.updateStatus.bind(this)}></img>
-            {this.state.status === 'success' ? (
+            {this.state.status === 'wait' ? (
                 <div>
                     
                   {this.state.position.wait ? (
@@ -127,13 +133,25 @@ class Wait extends React.Component {
                 
                 <p>error message: {this.state.msg}</p>
               </div>
-            ) : ( 
+            ) : ( this.state.status === 'cancel' ? (
+              <div>
+                <p>Are you sure to cancel?</p>
+                <button className="Button cancel" onClick={this.cancel.bind(this)}>Cancel</button>
+              </div>
+            ) : (
               <p>reading infomation</p>
+            )
+              
             ))}
           </div>
         </div>
       </div>
-    )
+    );
+    return this.state.status === 'cancel' ? (
+      <Auth>
+        {child}
+      </Auth>
+    ) : child;
   }
 
 }

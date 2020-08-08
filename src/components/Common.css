@@ -73,6 +73,11 @@
 
 }
 
+.Table-header{
+  height: 30px;
+  padding: 3px;
+}
+
 .Table-item:hover{
 	background-color: rgba(0, 0, 0, 0.1);
 	border-radius: 2px 2px 2px 2px;
@@ -83,7 +88,7 @@
 	white-space: nowrap;
 	overflow: hidden;
 	text-overflow: ellipsis;
-	text-align: start;
+	text-align: center;
 }
 
 
@@ -135,12 +140,24 @@
   position: absolute;
   top: 10px;
   right: 10px;
-  border-radius: 5px;
+  border-radius: 25px;
+  z-index: 10;
+}
+
+.Button.add{
+  background-color: rgb(168, 167, 167);
+  width: 60px;
+  height: 60px;
+  padding: 5px;
+  position: absolute;
+  bottom: 40px;
+  right: 20px;
+  border-radius: 30px;
   z-index: 10;
 }
 
 
-.Button.sync:hover{
+.Button:hover{
 	background-color: gray;
 }
 
@@ -204,4 +221,98 @@
 }
 .Status-entry.wait{
   background-color: red;
+}
+
+.Account-container{
+  width: 200px;
+  height: 40px;
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  z-index: 30;
+  overflow: auto;
+}
+
+.Account-frame{
+  height: 40px;
+  width: 80px;
+  float: left;
+}
+.Account-name{
+  width: 120px;
+  height: 40px;
+  padding-top: 8px;
+  padding-right: 5px;
+  text-align: end;
+  font-size: medium;
+  float: left;
+}
+.Img.account{
+  width: 30px;
+  height: 30px;
+  border-radius: 5px;
+  margin-top: 5px;
+}
+.Button.sign-out{
+  width: 30px;
+  height: 30px;
+  padding: 4px;
+  background-color: white;
+  border-radius: 5px;
+  margin-left: 5px;
+
+}
+
+.Button.sign-out:hover{
+	background-color: rgb(184, 184, 184);
+}
+
+.Queue-form{
+  background-color: rgba(240, 240, 240, 0.9);
+  border-radius: 2px;
+  stroke: black;
+  stroke-width: 2px;
+  position: relative;
+  box-shadow: 2px,2px,black;
+  padding: 5px;
+}
+
+.Form-container{
+  z-index: 30;
+  position: absolute;
+  top: 30px;
+  left: 10px;
+  right: 10px;
+}
+
+.Form-cancel{
+  position: absolute;
+  top: -2px;
+  right: -2px;
+  font-size: 1.2em;
+  font-weight: 900;
+  color: white;
+  background-color: grey;
+  width: 48px;
+  height: 30px;
+  border-radius: 6px;
+  z-index: 35;
+}
+
+.QR-canvas{
+  width: 200px;
+  height: 200px;
+}
+
+
+.Button.qr{
+  background-color: rgb(168, 167, 167);
+  width: 50px;
+  height: 50px;
+  padding: 5px;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  border-radius: 10px;
+  z-index: 10;
 }
