@@ -4,6 +4,7 @@ import Map from './Map';
 import Wait from './Wait';
 import Manage from './Manage';
 import Queue from './Queue';
+import Entry from './Entry';
 import { HashRouter, Route, Switch } from 'react-router-dom';
 import QueryString from 'query-string';
 
@@ -32,6 +33,7 @@ export default class APP extends React.Component {
             <Auth>
               {/* Editing queue info requires authentication */}
               <Route path='/app/manage' component={Manage}></Route>
+              <Route path='/app/check' component={Entry}></Route>
             </Auth>
 
           </Switch>
