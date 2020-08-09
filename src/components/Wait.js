@@ -16,6 +16,7 @@ class Wait extends React.Component {
       status: 'init',
       queue: null,
       position: null,
+      wait_size: 0
     };
   }
 
@@ -32,7 +33,8 @@ class Wait extends React.Component {
         this.setState({
           status: 'wait',
           queue: res.data['queue'],
-          position: res.data,
+          position: res.data['entry'],
+          wait_size: res.data['wait_size']
         }); 
       }else {
         console.log(`Fail to get your position.${res.data['msg']}`);
@@ -84,7 +86,7 @@ class Wait extends React.Component {
           <div className="Header-frame">
             <img src={logo} className="Queue-logo" alt="logo" />
             <div className="Header-title">
-              <h2>Your Position</h2>
+              <h3>Your Position</h3>
             </div>
           </div>
         </div>
@@ -92,12 +94,12 @@ class Wait extends React.Component {
           <div className="Scroll-container">
             <img className="Button sync" src={sync} alt="update status" onClick={this.updateStatus.bind(this)}></img>
             {this.state.status === 'wait' ? (
-                <div>
+                <div style={{width: "100%", margin: 0, padding: 0}}>
                     
                   {this.state.position.wait ? (
                     <div className="Counter-container">
                       <div className="Counter-msg">Number of remains</div>
-                      <div className="Counter-value">{this.state.position.wait_size}</div>
+                      <div className="Counter-value">{this.state.wait_size}</div>
                     </div>
                   ) : (
                       <img className="Party" src={party} alt="Now It's Your Turn! Party!!"/>

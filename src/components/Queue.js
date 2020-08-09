@@ -106,7 +106,7 @@ class Queue extends React.Component {
           <div className="Header-frame">
             <img src={logo} className="Queue-logo" alt="logo" />
             <div className="Header-title">
-              <h2>Join Queue</h2>
+              <h3>Join Queue</h3>
             </div>
           </div>
         </div>
@@ -114,7 +114,7 @@ class Queue extends React.Component {
           <div className="Scroll-container">
             {this.state.queue ? (
                 <div>
-                  <h2>{this.state.queue.name}</h2>
+                  <h3>{this.state.queue.name}</h3>
                   {this.state.qr_code ? (
                     <canvas className="QR-canvas" ref={this.canvas_ref}></canvas>
                   ) : null }

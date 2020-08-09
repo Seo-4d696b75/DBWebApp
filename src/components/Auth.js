@@ -65,7 +65,7 @@ class Auth extends React.Component {
             <div className="Account-name">{this.state.user.displayName}</div>
             <div className="Account-frame">
 
-              <img className="Img account" src={this.state.user.photoURL} alt="account icon"></img>
+              <img className="Img account" src={this.state.user.photoURL} alt=""></img>
               <img className="Button sign-out" src={sign_out} alt="sign out" onClick={this.onSignOut.bind(this)}></img>
             </div>
           </div>

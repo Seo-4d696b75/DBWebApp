@@ -197,7 +197,7 @@ class Manage extends React.Component {
           <div className="Header-frame">
             <img src={logo} className="Queue-logo" alt="logo" />
             <div className="Header-title">
-              <h2>Queue Console</h2>
+              <h3>Queue Console</h3>
             </div>
           </div>
         </div>
@@ -215,7 +215,7 @@ class Manage extends React.Component {
             <div className="Form-container">
               <div className="Form-cancel" onClick={() => {this.setState(Object.assign(this.state, {add_queue: false}))}}>✖</div>
               <div className="Queue-form">
-                <h4>Fill in information of queue</h4>
+                <p>Fill in information of queue</p>
                 <table>
                   <tbody>
                     <tr>

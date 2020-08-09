@@ -35,8 +35,8 @@
 
 .Header-title{
   position: absolute;
-  left: 200px;
-  top: 20px;
+  left: 180px;
+  top: 50px;
 }
 
 .Main-frame{
@@ -224,7 +224,7 @@
 }
 
 .Account-container{
-  width: 200px;
+  width: 260px;
   height: 40px;
   position: absolute;
   top: 5px;
@@ -239,12 +239,14 @@
   float: left;
 }
 .Account-name{
-  width: 120px;
+  width: 180px;
   height: 40px;
-  padding-top: 8px;
+  padding-top: 10px;
   padding-right: 5px;
   text-align: end;
-  font-size: medium;
+  font-size: small;
+	overflow: hidden;
+	text-overflow: ellipsis;
   float: left;
 }
 .Img.account{
@@ -260,6 +262,7 @@
   background-color: white;
   border-radius: 5px;
   margin-left: 5px;
+  margin-top: 5px;
 
 }
 
