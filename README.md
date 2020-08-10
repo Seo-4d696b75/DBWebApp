@@ -1,3 +1,24 @@
+# Queue Manager
+<img src="https://user-images.githubusercontent.com/25225028/89762507-89312f00-db2b-11ea-813a-9b0c73d92234.png" width="200"/>
+
+**ブラウザ上で動作する整理券式の順番管理システム**  
+
+COVID-19の感染拡大は収束の兆しを見せませんが、経済活動の再開は着実に進んでいます。その中で求めらるのは「いかに３密を避けながら再開するか」。お店によっては多くのお客さんが集まりで店先に行列ができてしまい、整理券を配布するなどして大人数の集中を避けるなど工夫が必要です。そこで、このWebアプリはお手持ちのスマホだけで順番を管理するシステムを提供します。整理券の発券装置など導入に必要な器具は一切なし！順番の管理はすべて電子的に行われ、人と人の接触もありませんので濃厚接触の回避にも役立ちます。  
+
+<img src="https://user-images.githubusercontent.com/25225028/89763352-4a9c7400-db2d-11ea-8252-fbe9bdb2b034.png" width="600" />
+
+## サービスの構成
+ブラウザ上のWebアプリ本体以外に、順番を記録するデータベース・データベースを読み書きするAPIサーバ・ユーザ認証を行う外部サービス（[Firebase](https://firebase.google.com/)）から構成されます。
+
+<img src="https://user-images.githubusercontent.com/25225028/89763788-3016ca80-db2e-11ea-9e35-3f24e3ca2719.jpg" style="width:100%;" />
+
+## ユーザ認証
+本サービスの正常な運用に対する脅威として、悪意あるデータの書き込み・消去などの荒し行為が懸念されます。そこで、本アプリではユーザ認証機能を加えることでデータ操作を記録します。自分が作成した待ち行列や順番を他人が勝手に操作することは出来ません。  
+
+<img src="https://user-images.githubusercontent.com/25225028/89764580-a49e3900-db2f-11ea-8e16-b35cb5726fbe.png"  width="600" />
+
+
+# Default README
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
