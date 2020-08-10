@@ -39,12 +39,21 @@
   top: 50px;
 }
 
-.Main-frame{
+.Content-container{
   position: absolute;
-  width: 100%;
   top: 100px;
   left: 0;
+  right: 0;
   bottom: 0;
+}
+
+.Main-frame{
+  position: relative;
+  width: 100%;
+  max-width: 600px;
+  height: 100%;
+  min-height: 100%;
+  margin: auto;
 }
 
 .Scroll-container{

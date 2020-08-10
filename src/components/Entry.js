@@ -21,8 +21,8 @@ class Entry extends React.Component {
   }
 
   updateQueue() {
-    
-    firebase.auth().currentUser.getIdToken(true).then( token =>{
+
+    firebase.auth().currentUser.getIdToken(true).then(token => {
       return axios.get('http://133.242.50.211/api/check', {
         headers: {
           Authorization: `Bearer ${token}`
@@ -45,7 +45,7 @@ class Entry extends React.Component {
     })
   }
 
-  
+
 
   onSelect(entry) {
     console.log(entry);
@@ -64,45 +64,47 @@ class Entry extends React.Component {
             </div>
           </div>
         </div>
-        <div className="Main-frame">
+        <div className="Content-container">
+          <div className="Main-frame">
 
-          <img className="Button sync" src={sync} alt="update status" onClick={this.updateQueue.bind(this)}></img>
-          <p>All the queues in which<br/> you are waiting now</p>
-          {this.state.entry_list ? (
+            <img className="Button sync" src={sync} alt="update status" onClick={this.updateQueue.bind(this)}></img>
+            <p>All the queues in which<br /> you are waiting now</p>
+            {this.state.entry_list ? (
 
-            <table className="Table entry">
-              <thead>
-                <tr>
-                  <th>Queue Name</th>
-                  <th>Sign Name</th>
-                  <th>Time</th>
-                  <th>Action</th>
-                </tr>
-              </thead>
-              <tbody>
-                {this.state.entry_list.map((data, i) => {
-                  return (
-                    <tr className="Table-item" key={i} >
-                      <td className="Table-cell">{data.queue_name}</td>
-                      <td className="Table-cell">{data.entry.name}</td>
-                      <td className="Table-cell">{data.entry.time}</td>
-                      <td className="Table-cell action">
+              <table className="Table entry">
+                <thead>
+                  <tr>
+                    <th>Queue Name</th>
+                    <th>Sign Name</th>
+                    <th>Time</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {this.state.entry_list.map((data, i) => {
+                    return (
+                      <tr className="Table-item" key={i} >
+                        <td className="Table-cell">{data.queue_name}</td>
+                        <td className="Table-cell">{data.entry.name}</td>
+                        <td className="Table-cell">{data.entry.time}</td>
+                        <td className="Table-cell action">
 
-                        <button className="Button dequeue" onClick={this.onSelect.bind(this, data.entry)}>Select</button>
+                          <button className="Button dequeue" onClick={this.onSelect.bind(this, data.entry)}>Select</button>
 
-                      </td>
-                    </tr>
-                  );
-                })}
-              </tbody>
-            </table>
+                        </td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
 
-          ) : ( this.state.msg ? (
-            <p>{this.state.msg}</p>
-          ) : (
-            <p>reading queue infomation</p>
-          )          
-          )}
+            ) : (this.state.msg ? (
+              <p>{this.state.msg}</p>
+            ) : (
+                <p>reading queue infomation</p>
+              )
+              )}
+          </div>
         </div>
       </div>
     )
